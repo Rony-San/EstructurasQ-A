@@ -1,4 +1,4 @@
-import Question from "@models/prompt";
+import Question from "@models/question";
 import { connectToDB } from "@utils/database";
 
 export const GET = async (request, { params }) => {
