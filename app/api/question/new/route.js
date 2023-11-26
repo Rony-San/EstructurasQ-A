@@ -1,7 +1,6 @@
 import { connectToDB } from "@utils/database";
 import Question from "@models/question";
 
-export const revalidate = 1;
 export const POST = async (req) => {
   const { userId, questionLine, tag, option } = await req.json();
 

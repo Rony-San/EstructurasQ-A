@@ -1,15 +1,13 @@
 import Question from "@models/question";
 import { connectToDB } from "@utils/database";
 
-export const revalidate = 1;
 export const GET = async (request, { params }) => {
   try {
     await connectToDB();
 
     const question = await Question.findById(params.id).populate("creator");
-    const path = request.nextUrl.searchParams.get("path") || "/";
+    if (!question) return new Response("question Not Found", { status: 404 });
 
-    revalidatePath(path);
     return new Response(JSON.stringify(question), { status: 200 });
   } catch (error) {
     return new Response("Internal Server Error", { status: 500 });

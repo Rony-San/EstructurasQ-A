@@ -1,7 +1,6 @@
-import Question from "@models/question";
+import Question from "@models/prompt";
 import { connectToDB } from "@utils/database";
 
-export const revalidate = 1;
 export const GET = async (request, { params }) => {
   try {
     await connectToDB();

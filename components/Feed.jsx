@@ -27,7 +27,7 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/question", { next: { revalidate: 1 } });
+    const response = await fetch("/api/question");
     const data = await response.json();
 
     setAllPosts(data);
