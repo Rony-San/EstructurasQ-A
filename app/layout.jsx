@@ -3,8 +3,8 @@ import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
 export const metadata = {
-  title: "Proyecto_Final_Estrcuturas",
-  description: "Preguntas de parciales",
+  title: "Proyecto_Final_Estructuras",
+  description: "Estructuras",
 };
 
 const RootLayout = ({ children }) => {
