@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import PromptQuestion from "./PromptQuestion";
 
@@ -20,6 +20,7 @@ const PromptQuestionList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Nuevo estado para indicar carga
 
   // Search states
   const [searchText, setSearchText] = useState("");
@@ -27,9 +28,15 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/question");
-    const data = await response.json();
-    setAllPosts(data);
+    try {
+      const response = await fetch("/api/question");
+      const data = await response.json();
+      setAllPosts(data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    } finally {
+      setLoading(false); // Actualizar el estado de carga al finalizar
+    }
   };
 
   useEffect(() => {
@@ -37,7 +44,7 @@ const Feed = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+    const regex = new RegExp(searchtext, "i");
     return allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
@@ -71,7 +78,7 @@ const Feed = () => {
       <form
         className="relative w-full flex-center"
         onSubmit={(e) => {
-          e.preventDefault(); // Prevent default form submission
+          e.preventDefault();
         }}>
         <input
           type="text"
@@ -82,21 +89,30 @@ const Feed = () => {
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
-              // Handle the Enter key press (e.g., trigger search)
             }
           }}
           className="search_input peer"
         />
       </form>
 
-      {/* All Prompts */}
-      {searchText ? (
-        <PromptQuestionList
-          data={searchedResults}
-          handleTagClick={handleTagClick}
-        />
+      {/* Mostrar indicador de carga si está cargando */}
+      {loading ? (
+        <p>Cargando...</p>
       ) : (
-        <PromptQuestionList data={allPosts} handleTagClick={handleTagClick} />
+        // Mostrar el feed solo si no está cargando
+        <>
+          {searchText ? (
+            <PromptQuestionList
+              data={searchedResults}
+              handleTagClick={handleTagClick}
+            />
+          ) : (
+            <PromptQuestionList
+              data={allPosts}
+              handleTagClick={handleTagClick}
+            />
+          )}
+        </>
       )}
     </section>
   );
