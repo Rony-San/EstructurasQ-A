@@ -1,5 +1,5 @@
 "use client";
-import Feed from "@components/Feed";
+// import Feed from "@components/Feed";
 import { useRouter } from "next/navigation";
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
         estar preparado para las próximas evaluaciones.
         {router.push("/principal")}
       </p>
-      <Feed />
+      {/* <Feed /> */}
     </section>
   );
 };
