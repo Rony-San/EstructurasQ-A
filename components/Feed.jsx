@@ -1,64 +1,3 @@
-// "use client";
-
-// import React from "react";
-// import { useState, useEffect } from "react";
-// import PromptQuestion from "./PromptQuestion";
-
-// const QuestionCardList = ({ data, handleTagClick }) => {
-//   // Imprime true si data es un array
-
-//   return (
-//     <div className="mt-16 prompt_layout">
-//       {data.map((post) => (
-//         <PromptQuestion
-//           key={post._id}
-//           post={post}
-//           handleTagClick={handleTagClick}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
-
-// const Feed = () => {
-//   const [searchText, setSearchText] = useState("");
-//   const [posts, setPosts] = useState([]);
-
-//   const handleSearchChange = (e) => {};
-
-//   useEffect(() => {
-//     const fetchPost = async () => {
-//       const response = await fetch("/api/question");
-
-//       const data = await response.json();
-//       // console.log(data);
-//       setPosts(data);
-//     };
-//     fetchPost();
-//   }, []);
-
-//   return (
-//     <section className="feed">
-//       <form className="relative w-full flex-center">
-//         <input
-//           type="text"
-//           placeholder="Search for a tag or a username"
-//           value={searchText}
-//           onChange={handleSearchChange}
-//           required
-//           className="search_input peer"
-//         />
-//       </form>
-
-//       <QuestionCardList
-//         data={[posts]}
-//         handleTagClick={() => {}}></QuestionCardList>
-//     </section>
-//   );
-// };
-
-// export default Feed;
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -88,7 +27,7 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/question");
+    const response = await fetch("/api/question", { next: { revalidate: 1 } });
     const data = await response.json();
 
     setAllPosts(data);
@@ -96,7 +35,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  });
 
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search

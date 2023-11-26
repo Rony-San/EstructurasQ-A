@@ -7,8 +7,9 @@ export const GET = async (request, { params }) => {
     await connectToDB();
 
     const question = await Question.findById(params.id).populate("creator");
-    if (!question) return new Response("question Not Found", { status: 404 });
+    const path = request.nextUrl.searchParams.get("path") || "/";
 
+    revalidatePath(path);
     return new Response(JSON.stringify(question), { status: 200 });
   } catch (error) {
     return new Response("Internal Server Error", { status: 500 });
