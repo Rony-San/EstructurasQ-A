@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
 import PromptQuestion from "./PromptQuestion";
 
 const PromptQuestionList = ({ data, handleTagClick }) => {
@@ -42,7 +41,6 @@ const Feed = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
-
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, "i");
     return allPosts.filter(
@@ -54,18 +52,12 @@ const Feed = () => {
   };
 
   const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
-    // debounce method
-    setSearchTimeout(
-      setTimeout(() => {
-        const searchResult = filterPrompts(e.target.value);
-        setSearchedResults(searchResult);
-      })
-    );
+    // Realizar búsqueda de manera inmediata
+    const searchResult = filterPrompts(e.target.value);
+    setSearchedResults(searchResult);
   };
-
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
 
