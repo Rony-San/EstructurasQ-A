@@ -27,17 +27,14 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/question", {
-      method: "GET",
-    });
+    const response = await fetch("/api/question");
     const data = await response.json();
-
     setAllPosts(data);
   };
 
   useEffect(() => {
     fetchPosts();
-  });
+  }, []);
 
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
