@@ -130,13 +130,23 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
+      <form
+        className="relative w-full flex-center"
+        onSubmit={(e) => {
+          e.preventDefault(); // Prevent default form submission
+        }}>
         <input
           type="text"
           placeholder="Busca por Tag o por usuario"
           value={searchText}
           onChange={handleSearchChange}
           required
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              // Handle the Enter key press (e.g., trigger search)
+            }
+          }}
           className="search_input peer"
         />
       </form>

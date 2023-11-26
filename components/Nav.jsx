@@ -83,12 +83,9 @@ const Nav = () => {
       {/* mobile */}
 
       <div className="sm:hidden flex relative">
-        <button
-          type="button"
-          onClick={() => signIn(provider.id)}
-          className="quiz_btn mr-5">
+        <Link href="/test" className="quiz_btn mr-5">
           Quiz
-        </button>
+        </Link>
         {session?.user ? (
           <div className="flex">
             {" "}
