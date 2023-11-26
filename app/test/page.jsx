@@ -86,7 +86,7 @@ const Test = () => {
           </ul>
         </div>
       ))}
-      <button className="black_btn mt-5" onClick={finishExam}>
+      <button className="black_btn mt-5 mb-5" onClick={finishExam}>
         Terminar Examen
       </button>
     </div>

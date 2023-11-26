@@ -37,7 +37,7 @@ const Form = ({
         se mostrarán en la pagina principal de la materia para que los
         compañeros también puedan estudiarlas.
       </p>
-      <div className="flex ">
+      <div className="flex w-full mb-5">
         <form
           onSubmit={handleSubmit}
           className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism">
@@ -60,7 +60,7 @@ const Form = ({
           {console.log(option)}
           {question.option.map((additionalOption, index) => (
             <div key={index} className="flex items-center">
-              <label className="w-80">
+              <label className="w-96">
                 <span className="font-satoshi font-semibold text-base text-gray-700">
                   {" "}
                   Opción {index + 1}
