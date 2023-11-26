@@ -1,9 +1,7 @@
 "use client";
+import React from "react";
 import Feed from "@components/Feed";
-// import { useRouter } from "next/navigation";
-
-const Home = () => {
-  // const router = useRouter();
+const page = () => {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
@@ -17,12 +15,11 @@ const Home = () => {
         {" "}
         Crea y busca preguntas relacionadas con los temas de estructuras de
         datos. Estas te ayudarán a mejorar tu conocimiento sobre la materia y a
-        estar preparado para las próximas evaluaciones.
-        {/* {router.push("/principal")} */}
+        estar preparado para las próximas evaluaciones. diferente
       </p>
       <Feed />
     </section>
   );
 };
 
-export default Home;
+export default page;
