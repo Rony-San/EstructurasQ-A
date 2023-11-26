@@ -55,7 +55,7 @@ const Test = () => {
     const score = calculateScore();
     alert(`Tu calificación es: ${score}`);
     // Obtén el objeto router
-    window.location.href = "/";
+
     // Redirige a la página principal "/"
   };
 
