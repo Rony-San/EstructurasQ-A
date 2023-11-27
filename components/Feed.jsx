@@ -28,7 +28,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("/api/feed");
+      const response = await fetch("/api/question");
       const data = await response.json();
       setAllPosts(data);
     } catch (error) {
