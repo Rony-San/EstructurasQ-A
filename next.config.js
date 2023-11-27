@@ -14,6 +14,20 @@ const nextConfig = {
     };
     return config;
   },
+
+  async headers() {
+    return [
+      {
+        source: "/", // Ruta principal
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
