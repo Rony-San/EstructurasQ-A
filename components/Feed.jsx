@@ -23,12 +23,12 @@ const Feed = () => {
 
   // Search states
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
+  // const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("/api/question");
+      const response = await fetch("/api/feed");
       const data = await response.json();
       setAllPosts(data);
     } catch (error) {
@@ -58,6 +58,7 @@ const Feed = () => {
     const searchResult = filterPrompts(e.target.value);
     setSearchedResults(searchResult);
   };
+
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
 
