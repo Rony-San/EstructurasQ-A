@@ -44,7 +44,7 @@ const Form = ({
           <label>
             <span className="font-satoshi font-semibold text-base text-gray-700">
               {" "}
-              Escribe tu pregunta aquí
+              Cancel Escribe tu pregunta aquí
             </span>
             <input
               value={question.questionLine}
@@ -115,8 +115,13 @@ const Form = ({
             />
           </label>
           <div className="flex-end mx-3 mb-5 gap-4">
+            <button
+              onClick={handleAddInput}
+              className=" items-center justify-center text-sm bg-primary-orange rounded-full text-white w-8 h-8 lg:hidden md:hidden block shadow-lg hover:bg-sky-900">
+              +
+            </button>
             <Link href="/" className="text-gray-500 text-sm">
-              Cancel
+              Cancelar
             </Link>
 
             <button
@@ -126,11 +131,6 @@ const Form = ({
               {submitting ? `${type}ing...` : type}
             </button>
           </div>
-          <button
-            onClick={handleAddInput}
-            className=" items-center justify-center text-sm bg-primary-orange rounded-full text-white w-8 h-8 mt-10 mr-10 lg:hidden md:hidden block shadow-lg hover:bg-sky-900 fixed top-0.2 right-0">
-            +
-          </button>
         </form>
 
         <button
