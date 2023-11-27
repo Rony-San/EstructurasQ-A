@@ -18,7 +18,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/", // Ruta principal
+        source: "/api/feed", // Ruta del endpoint
         headers: [
           {
             key: "Cache-Control",
